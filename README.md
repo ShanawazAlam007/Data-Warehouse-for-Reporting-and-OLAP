@@ -3,7 +3,7 @@
 ## 1. High-Level Data Pipeline Architecture (A.1)
 The project implements a comprehensive end-to-end ELT lifecycle engineered natively within Snowflake to integrate Yelp's massive multi-dataset environment with historical meteorological records. The pipeline orchestrates a three-tier architecture: data is first ingested from local source systems into internal cloud stages (`@YELP_STAGE`), then flattened from semi-structured JSON and raw CSV into a relational Operational Data Store (ODS), and finally transformed into a high-performance analytical star schema. This design enables seamless correlation analysis between weather patterns and consumer engagement metrics through a robust, scalable cloud infrastructure.
 
-![](YELP New Data Architect.png)
+![](YELP_New_Data_Architect.png)
 
 ## 2. Ingestion & Cloud Staging Layer Verification (A.2, A.3)
 To handle the multi-gigabyte source data, SnowSQL was utilized to push the raw datasets into Snowflake's internal repository tier (`@YELP_STAGE`). This process ensures high-durability landing of data before any processing occurs.
@@ -49,7 +49,7 @@ The ODS layer transforms raw staging data into structured relational tables. Thi
 ## 5. Star Schema Architecture & Dimensional Modeling (C.1)
 The data warehouse (DWH) layer follows a classic Star Schema design optimized for OLAP. A central `FACT_REVIEW` table connects to four primary dimensions: `DIM_BUSINESS`, `DIM_USER`, `DIM_TEMPERATURE`, and `DIM_PRECIPITATION`. This modeling strategy simplifies complex joins and accelerates analytical queries across multiple business and environmental attributes.
 
-![](Star Schema.png)
+![](Star_Schema.png)
 
 ## 6. Production OLAP Analytical Evaluation (B.7, B.8)
 The final pipeline stage executes production-grade analytical queries to evaluate business performance against climate trends. By aggregating average ratings and review counts alongside daily temperature and precipitation, the warehouse provides actionable insights into how environmental factors correlate with consumer behavior.
