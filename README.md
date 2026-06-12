@@ -44,7 +44,7 @@ ORDER BY TABLE_SCHEMA, TABLE_NAME;
 ## 4. Operational Data Store (ODS) & Transformation Logic (B.1, B.2, B.3, B.4, B.5)
 The ODS layer transforms raw staging data into structured relational tables. This involves extracting fields from JSON variants, performing lateral flattening for nested arrays (e.g., check-in dates), and aligning date formats for join-readiness. The meteorological data is cleaned and cast into standard DATE and FLOAT types to ensure compatibility with the Yelp review timestamps.
 
-![](mid 2.jpeg)
+![](mid_2.jpeg)
 
 ## 5. Star Schema Architecture & Dimensional Modeling (C.1)
 The data warehouse (DWH) layer uses a star schema designed for fast OLAP reporting and simpler joins. The central `FACT_REVIEW` table stores the measurable review activity, while `DIM_BUSINESS`, `DIM_USER`, `DIM_TEMPERATURE`, and `DIM_PRECIPITATION` provide the descriptive context needed for analysis.
