@@ -47,9 +47,13 @@ The ODS layer transforms raw staging data into structured relational tables. Thi
 ![](mid 2.jpeg)
 
 ## 5. Star Schema Architecture & Dimensional Modeling (C.1)
-The data warehouse (DWH) layer follows a classic Star Schema design optimized for OLAP. A central `FACT_REVIEW` table connects to four primary dimensions: `DIM_BUSINESS`, `DIM_USER`, `DIM_TEMPERATURE`, and `DIM_PRECIPITATION`. This modeling strategy simplifies complex joins and accelerates analytical queries across multiple business and environmental attributes.
+The data warehouse (DWH) layer uses a star schema designed for fast OLAP reporting and simpler joins. The central `FACT_REVIEW` table stores the measurable review activity, while `DIM_BUSINESS`, `DIM_USER`, `DIM_TEMPERATURE`, and `DIM_PRECIPITATION` provide the descriptive context needed for analysis.
+
+The diagram below shows how the fact table connects to the business and weather dimensions in a compact warehouse layout.
 
 ![](Star_Schema.png)
+
+This structure keeps the model easy to query and supports reporting across both customer behavior and climate trends.
 
 ## 6. Production OLAP Analytical Evaluation (B.7, B.8)
 The final pipeline stage executes production-grade analytical queries to evaluate business performance against climate trends. By aggregating average ratings and review counts alongside daily temperature and precipitation, the warehouse provides actionable insights into how environmental factors correlate with consumer behavior.
